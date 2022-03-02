@@ -1,6 +1,6 @@
 package com.perscholas.cafe;
 
-public class Product {
+public abstract class Product {
 	private String name;
 	private double price;
 	private String description;
@@ -16,14 +16,13 @@ public class Product {
 	}
 
 	//use array as input
-	public void calculateProductTotal() {
-		double subtotal = this.quantity * this.price;
-		double salesTax = subtotal * 0.06;
-		double total = subtotal + salesTax;
-		System.out.println("Subtotal is: " + subtotal
-					+ "\nSales Tax: " + salesTax
-					+ "\nTotal is: " + String.format("%.2f", total));
-	}
+	abstract public double calculateProductTotal();
+//		double subtotal = this.quantity * this.price;
+//		double salesTax = subtotal * 0.06;
+//		double total = subtotal + salesTax;
+//		System.out.println("Subtotal is: " + subtotal
+//					+ "\nSales Tax: " + salesTax
+//					+ "\nTotal is: " + String.format("%.2f", total));
 
 	public String getName() {
 		return name;
