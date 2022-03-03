@@ -1,5 +1,7 @@
 package com.perscholas.cafe;
 
+import java.util.Scanner;
+
 public abstract class Product {
 	private String name;
 	private double price;
@@ -15,14 +17,12 @@ public abstract class Product {
 		this.description = description;
 	}
 
-	//use array as input
+
 	abstract public double calculateProductTotal();
-//		double subtotal = this.quantity * this.price;
-//		double salesTax = subtotal * 0.06;
-//		double total = subtotal + salesTax;
-//		System.out.println("Subtotal is: " + subtotal
-//					+ "\nSales Tax: " + salesTax
-//					+ "\nTotal is: " + String.format("%.2f", total));
+	abstract public void addOptions();
+	abstract public void printOptions();
+	abstract public void getInputFromUser(Scanner scanner);
+
 
 	public String getName() {
 		return name;
@@ -60,4 +60,6 @@ public abstract class Product {
 	public String toString() {
 		return this.name + ", " + this.price + ", " + this.description;
 	}
+
+
 }

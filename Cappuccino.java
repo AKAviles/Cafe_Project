@@ -1,5 +1,7 @@
 package com.perscholas.cafe;
 
+import java.util.Scanner;
+
 public class Cappuccino extends Product{
 	private boolean peppermint;
 	private boolean whippedCream;
@@ -35,6 +37,63 @@ public class Cappuccino extends Product{
 		return extraCost;
 	}
 
+	@Override
+	public void addOptions() {
+
+	}
+
+	@Override
+	public void getInputFromUser(Scanner scanner) {
+		System.out.println("How much " + getName() + " would you like?");
+		int count = scanner.nextInt();
+		setQuantity(count);
+		System.out.println("Would you like to add peppermint? Yes or No");
+		scanner.nextLine();
+		String decision = scanner.nextLine();
+		editPeppermint(decision);
+		System.out.println("Would you like to add whipped cream? Yes or No");
+		decision = scanner.nextLine();
+		editWhip(decision);
+		printOptions();
+		calculateProductTotal();
+	}
+
+	@Override
+	public void printOptions() {
+		if (this.whippedCream) {
+			if (this.peppermint) {
+				System.out.println("Peppermint and Whipped cream added to cappuccino");
+			} else {
+				System.out.println("Whipped cream added to coffee");
+			}
+		} else if (this.peppermint) {
+			System.out.println("Peppermint added to coffee");
+		} else {
+			System.out.println("No options added");
+		}
+	}
+
+	private void editWhip(String decision) {
+		String lowerCase = decision.toLowerCase();
+		switch(lowerCase) {
+			case "yes":
+				setWhippedCream(true);
+				break;
+			case "no":
+				break;
+		}
+	}
+
+	private void editPeppermint(String decision) {
+		String lowerCase = decision.toLowerCase();
+		switch(lowerCase) {
+			case "yes":
+				setPeppermint(true);
+				break;
+			case "no":
+				break;
+		}
+	}
 
 	public boolean isPeppermint() {
 		return peppermint;
